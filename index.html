@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#12181A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<title>Terra Board</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="forest">
+
+  <main id="board" aria-label="Classroom board"></main>
+
+  <div id="toolbar" class="toolbar" role="toolbar" aria-label="Board controls">
+    <button type="button" id="tb-edit" class="tb-btn" aria-pressed="false">Edit layout</button>
+    <button type="button" id="tb-add" class="tb-btn edit-only">Add widget</button>
+    <button type="button" id="tb-reset" class="tb-btn edit-only">Reset layout</button>
+    <span id="tb-hint" class="tb-hint edit-only">Drag to move. Drag the corner to resize.</span>
+    <span class="tb-spacer"></span>
+    <button type="button" id="tb-theme" class="tb-btn">Theme</button>
+    <button type="button" id="tb-sound" class="tb-btn" aria-pressed="false">Sound: off</button>
+    <button type="button" id="tb-test" class="tb-btn">Test bell</button>
+    <button type="button" id="tb-full" class="tb-btn">Full screen</button>
+  </div>
+
+  <div id="unlock" class="unlock">
+    <div class="unlock-card">
+      <svg class="unlock-ring" viewBox="0 0 300 300" aria-hidden="true">
+        <circle cx="150" cy="150" r="135" fill="none" stroke="#263030" stroke-width="10"></circle>
+        <circle cx="150" cy="150" r="135" fill="none" stroke="#D4A855" stroke-width="10" stroke-linecap="round" stroke-dasharray="848.2" stroke-dashoffset="212"></circle>
+      </svg>
+      <h1>Terra Board</h1>
+      <p>Tap once to turn on the bell. Browsers keep sound off until someone taps the page, and the bell can&rsquo;t ring without it.</p>
+      <button type="button" id="start-sound" class="unlock-primary">Start with sound</button>
+      <button type="button" id="start-silent" class="unlock-secondary">Start without sound</button>
+    </div>
+  </div>
+
+  <script src="bell-engine.js"></script>
+  <script src="audio.js"></script>
+  <script src="widgets.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
