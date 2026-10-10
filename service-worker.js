@@ -1,5 +1,5 @@
 // Bump CACHE_NAME every time any app file changes, or installed devices keep serving the old copy.
-const CACHE_NAME = "terra-board-v1";
+const CACHE_NAME = "terra-board-v2";
 const APP_SHELL = [
   "./index.html", "./style.css", "./app.js", "./widgets.js", "./bell-engine.js", "./audio.js",
   "./manifest.json", "./icon-192.png", "./icon-512.png"
