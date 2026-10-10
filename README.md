@@ -18,11 +18,12 @@ Your original bell-schedule repository and its address are not affected.
 
 ## Using the board
 
-- **Edit layout** shows controls on every widget. Drag a widget to move it. Drag the gold corner to resize. **Settings** and **Remove** appear at the top of each widget. **Add widget** and **Reset layout** appear in the toolbar. A new widget goes into an empty spot; if the board is full it appears in the middle, on top of the others, so drag it where you want it. Tap **Done editing** when finished.
+- **Edit layout** (in the Menu) shows controls on every widget. Drag a widget to move it. Drag the gold corner to resize. **Settings** and **Remove** appear at the top of each widget. **Add widget** and **Reset layout** appear in a bar along the bottom while you edit. A new widget goes into an empty spot; if the board is full it appears in the middle, on top of the others, so drag it where you want it. Tap **Done editing** when finished.
 - Tap the **bell widget** to flip between the countdown ring and the full day's schedule.
-- The toolbar fades after 4 seconds so the room only sees the board. Tap near the bottom edge to bring it back. That first tap only wakes the toolbar; it will not press a widget behind it.
-- **Theme** cycles Forest, Slate, Dusk, Paper and Black.
-- **Test bell** plays the chime so you can check the volume.
+- A small **Menu** button sits in the top-right corner. Tap it to open a short panel with Edit layout, Theme, Sound, Test bell and Full screen. The panel closes when you tap anywhere else, or by itself after 8 seconds. Nothing ever sits across the bottom of the board, so every control on the bottom row stays tappable.
+- The Menu button fades after 4 seconds so the room only sees the board. Tap the corner once to bring it back. That first tap only wakes the button; it will not press anything behind it.
+- **Theme** (in the Menu) cycles Forest, Slate, Dusk, Paper and Black.
+- **Test bell** (in the Menu) plays the chime so you can check the volume.
 
 ### Widgets
 
@@ -47,7 +48,7 @@ Edit `schedule.json` in the repository on github.com (open the file, click the p
 
 ## Updating the code later
 
-Whenever any code file changes (`index.html`, `style.css`, `app.js`, `widgets.js`, `bell-engine.js`, `audio.js`), also change the number in `service-worker.js` (`terra-board-v1` to `terra-board-v2`, and so on). Without that, installed devices keep running the old copy. Then close and reopen the installed app on each device.
+Whenever any code file changes (`index.html`, `style.css`, `app.js`, `widgets.js`, `bell-engine.js`, `audio.js`), also change the number in `service-worker.js` (`terra-board-v2` to `terra-board-v3`, and so on). Without that, installed devices keep running the old copy. Then close and reopen the installed app on each device.
 
 ## Files
 
