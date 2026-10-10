@@ -1,5 +1,5 @@
 /* Terra Board
- * Palette: forest night, sage, gold, amber, slate — carried over from the bell app.
+ * Palette: forest night, sage, gold, amber, slate â€” carried over from the bell app.
  * Every widget sizes its own type from --u / --uw / --uh, which app.js sets from
  * the widget's real pixel size, so text scales with the box on any screen. */
 
@@ -54,7 +54,7 @@ button:focus-visible, textarea:focus-visible, select:focus-visible, input:focus-
   outline: 2px solid var(--gold); outline-offset: 2px;
 }
 
-/* ───────── board + grid placement ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ board + grid placement â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #board {
   position: absolute;
   top: calc(env(safe-area-inset-top, 0px) + 8px);
@@ -108,7 +108,7 @@ body.editing .widget[data-type="bell"] .card { border-color: var(--card-border);
 .widget-body button.primary { background: var(--gold); color: var(--on-gold); border-color: transparent; font-weight: 500; }
 .widget-body button:disabled { opacity: .4; cursor: default; }
 
-/* ───────── bell schedule ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ bell schedule â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .w-bell { gap: calc(var(--u) * 1.5); cursor: pointer; }
 .bell-stage {
   --s: min(calc(var(--uw) * 90), calc(var(--uh) * 80));
@@ -145,7 +145,7 @@ body.editing .widget[data-type="bell"] .card { border-color: var(--card-border);
 }
 .bell-list li.current { color: var(--gold); font-weight: 500; }
 
-/* ───────── clock / date ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ clock / date â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .clock-time {
   display: flex; align-items: baseline; gap: .22em;
   font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1;
@@ -158,7 +158,7 @@ body.editing .widget[data-type="bell"] .card { border-color: var(--card-border);
 .date-dow { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.05; font-size: min(calc(var(--uw) * 13), calc(var(--uh) * 30)); }
 .date-md { color: var(--ink-dim); font-size: min(calc(var(--uw) * 9), calc(var(--uh) * 20)); }
 
-/* ───────── timer + stopwatch ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ timer + stopwatch â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .w-timer, .w-stopwatch { gap: calc(var(--u) * 3); padding: calc(var(--u) * 3); }
 .timer-bar { width: 80%; height: calc(var(--u) * 2.4); min-height: 6px; background: var(--track); border-radius: 999px; overflow: hidden; }
 .timer-fill { height: 100%; width: 100%; background: var(--sage); border-radius: 999px; transition: width .25s linear; }
@@ -173,7 +173,7 @@ body.editing .widget[data-type="bell"] .card { border-color: var(--card-border);
 .w-stopwatch.running .sw-digits { color: var(--sage); }
 @keyframes pulse { 50% { opacity: .35; } }
 
-/* ───────── notepad ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ notepad â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .w-notepad { align-items: stretch; justify-content: stretch; }
 .np-text {
   width: 100%; height: 100%; resize: none; border: 0; outline-offset: -4px;
@@ -188,7 +188,7 @@ body.editing .widget[data-type="bell"] .card { border-color: var(--card-border);
 .w-notepad[data-scale="L"] .np-text { font-size: max(16px, calc(var(--u) * 13)); }
 .w-notepad[data-scale="XL"] .np-text { font-size: max(18px, calc(var(--u) * 18)); }
 
-/* ───────── traffic light ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ traffic light â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .w-traffic { padding: calc(var(--u) * 3); }
 .tl {
   --lamp: min(calc(var(--uw) * 56), calc(var(--uh) * 24));
@@ -205,7 +205,7 @@ body.editing .widget[data-type="bell"] .card { border-color: var(--card-border);
 .lamp.yellow.lit { background: #F2C24A !important; box-shadow: 0 0 calc(var(--lamp) * .4) rgba(242, 194, 74, .6); }
 .lamp.green.lit { background: #52C07F !important; box-shadow: 0 0 calc(var(--lamp) * .4) rgba(82, 192, 127, .6); }
 
-/* ───────── work symbols ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ work symbols â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .w-symbols { align-items: stretch; justify-content: stretch; padding: calc(var(--u) * 2.5); gap: calc(var(--u) * 2); }
 .ws-main {
   position: relative; flex: 1; min-height: 0; overflow: hidden;
@@ -221,7 +221,7 @@ body.editing .widget[data-type="bell"] .card { border-color: var(--card-border);
 .ws-chip.on { border-color: var(--ink) !important; background: rgba(127, 127, 127, .3) !important; }
 .ws-dot { width: .8em; height: .8em; border-radius: 50%; display: inline-block; }
 
-/* ───────── name picker ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ name picker â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .w-picker { gap: calc(var(--u) * 2.5); padding: calc(var(--u) * 3); }
 .np-view { text-align: center; flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; }
 .np-name { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.05; font-size: min(calc(var(--uw) * 12), calc(var(--uh) * 22)); overflow-wrap: anywhere; }
@@ -237,7 +237,7 @@ body.editing .widget[data-type="bell"] .card { border-color: var(--card-border);
 .np-actions { display: flex; flex-wrap: wrap; gap: calc(var(--u) * 1.6); justify-content: center; }
 .np-opt { color: var(--ink-dim); font-size: max(12px, calc(var(--u) * 3.6)); display: flex; align-items: center; gap: .5em; cursor: pointer; }
 
-/* ───────── edit mode overlay ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ edit mode overlay â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .edit-overlay {
   position: absolute; inset: 0; z-index: 5; display: none;
   flex-direction: column; align-items: center; justify-content: flex-start; gap: 8px; padding-top: 10px;
@@ -258,28 +258,56 @@ body.editing .edit-overlay { display: flex; }
   background: linear-gradient(135deg, transparent 48%, var(--gold) 48%, var(--gold) 56%, transparent 56%, transparent 68%, var(--gold) 68%, var(--gold) 76%, transparent 76%);
 }
 
-/* ───────── toolbar ───────── */
-.toolbar {
-  position: fixed; z-index: 30; left: 50%; transform: translateX(-50%);
-  bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px;
-  width: max-content; max-width: calc(100vw - 16px); padding: 8px 10px;
-  background: var(--panel); border: 1px solid var(--card-border); border-radius: 26px;
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ menu button + toolbar â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * While the board is in use, the only thing on screen is a small Menu button in the
+ * top-right corner (over the Date widget, which has nothing to press). It opens a short
+ * panel there. Nothing ever sits across the bottom row of widgets.
+ * While editing, the full toolbar docks along the bottom and the board shrinks to make room. */
+.menu-btn {
+  position: fixed; z-index: 31;
+  top: calc(env(safe-area-inset-top, 0px) + 10px);
+  right: calc(env(safe-area-inset-right, 0px) + 10px);
+  background: var(--panel); color: var(--ink);
+  border: 1px solid var(--card-border); border-radius: 999px;
+  padding: 9px 18px; font-size: 14px; cursor: pointer;
   transition: opacity .45s ease;
 }
-.toolbar.faded { opacity: 0; pointer-events: none; }
+.menu-btn[aria-expanded="true"] { background: var(--gold); color: var(--on-gold); border-color: transparent; }
+.menu-btn.faded { opacity: 0; pointer-events: none; }
+body.editing .menu-btn { display: none; }
+
+.toolbar {
+  position: fixed; z-index: 30; display: none;
+  top: calc(env(safe-area-inset-top, 0px) + 56px);
+  right: calc(env(safe-area-inset-right, 0px) + 10px);
+  flex-direction: column; align-items: stretch; gap: 8px;
+  width: max-content; max-width: calc(100vw - 20px); padding: 10px;
+  background: var(--panel); border: 1px solid var(--card-border); border-radius: 20px;
+}
+.toolbar.open { display: flex; }
+.toolbar .tb-btn { text-align: left; }
+.toolbar .tb-spacer { display: none; }
+
+body.editing .toolbar {
+  display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center;
+  top: auto; right: auto; left: 50%; transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+  border-radius: 26px; padding: 8px 10px;
+}
+body.editing .toolbar .tb-btn { text-align: center; }
+body.editing .toolbar .tb-spacer { display: block; width: 6px; }
+
 .tb-btn {
   background: transparent; border: 1px solid var(--card-border); border-radius: 999px;
   padding: 9px 16px; font-size: 14px; cursor: pointer; color: var(--ink);
 }
 .tb-btn[aria-pressed="true"] { background: var(--gold); color: var(--on-gold); border-color: transparent; }
 .tb-hint { font-size: 13px; color: var(--ink-dim); padding: 0 6px; }
-.tb-spacer { width: 6px; }
 .edit-only { display: none; }
 body.editing .edit-only { display: inline-flex; }
 body.editing .tb-hint.edit-only { display: inline; }
 
-/* ───────── modal ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ modal â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .modal-back { position: fixed; inset: 0; z-index: 60; background: rgba(8, 11, 12, .7); display: flex; align-items: center; justify-content: center; padding: 16px; }
 .modal { background: var(--panel); border: 1px solid var(--card-border); border-radius: 20px; width: 100%; max-width: 460px; max-height: 82vh; overflow: auto; padding: 20px; }
 .modal-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
@@ -291,7 +319,7 @@ body.editing .tb-hint.edit-only { display: inline; }
 .settings-row input[type="checkbox"] { width: 22px; height: 22px; }
 .settings-row select { font: inherit; padding: 6px 10px; border-radius: 10px; background: var(--card); color: var(--ink); border: 1px solid var(--card-border); }
 
-/* ───────── start overlay ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ start overlay â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .unlock { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 24px; background-color: var(--bg); background-image: var(--bg-image); }
 .unlock-card { max-width: 420px; text-align: center; }
 .unlock-ring { width: 120px; height: 120px; transform: rotate(-90deg); margin-bottom: 8px; }
@@ -301,7 +329,7 @@ body.editing .tb-hint.edit-only { display: inline; }
 .unlock-primary { background: var(--gold); color: var(--on-gold); border: 0; font-weight: 500; }
 .unlock-secondary { background: transparent; color: var(--ink-dim); border: 1px solid var(--card-border); }
 
-/* ───────── narrow screens: widgets stack in one scrolling column ───────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€ narrow screens: widgets stack in one scrolling column â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 body.stacked #board { overflow-y: auto; display: flex; flex-direction: column; padding-bottom: 150px; }
 body.stacked.editing #board { bottom: calc(env(safe-area-inset-bottom, 0px) + 8px); background-image: none; }
 body.stacked .widget { position: relative; left: auto; top: auto; width: 100%; height: calc(var(--h) * 34px); flex: none; }
@@ -311,5 +339,5 @@ body.stacked { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   .w-timer.done .timer-digits { animation: none; }
-  .ring-progress, .timer-fill, .toolbar, .lamp { transition: none; }
+  .ring-progress, .timer-fill, .menu-btn, .lamp { transition: none; }
 }
