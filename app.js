@@ -268,7 +268,8 @@
   /* ───────── toolbar ───────── */
   const tb = {
     edit: $("#tb-edit"), add: $("#tb-add"), theme: $("#tb-theme"), sound: $("#tb-sound"),
-    test: $("#tb-test"), full: $("#tb-full"), reset: $("#tb-reset"), hint: $("#tb-hint"), bar: $("#toolbar")
+    test: $("#tb-test"), full: $("#tb-full"), reset: $("#tb-reset"), hint: $("#tb-hint"), bar: $("#toolbar"),
+    menu: $("#menu-btn")
   };
 
   function setTheme(id) {
@@ -295,8 +296,9 @@
     document.body.classList.toggle("editing", on);
     tb.edit.textContent = on ? "Done editing" : "Edit layout";
     tb.edit.setAttribute("aria-pressed", String(on));
+    if (on) setMenu(false);
     syncBoardInset();
-    showToolbar();
+    wakeMenu();
   }
   window.addEventListener("resize", syncBoardInset);
   tb.edit.addEventListener("click", function () { setEditing(!state.editing); });
@@ -333,31 +335,49 @@
     state.widgets.forEach(mount); sortDom(); save();
   });
 
-  // Toolbar fades out when the board is idle so the room sees only the board.
-  let fadeTimer = null;
-  function showToolbar() {
-    tb.bar.classList.remove("faded");
+  // The Menu button (top-right) fades after 4 s so the room sees only the board.
+  // The panel it opens closes by itself after 8 s without a tap inside it.
+  let fadeTimer = null, closeTimer = null;
+  function wakeMenu() {
+    tb.menu.classList.remove("faded");
     clearTimeout(fadeTimer);
     fadeTimer = setTimeout(function () {
-      if (!state.editing && !$("#modal")) tb.bar.classList.add("faded");
+      if (!state.editing && !state.menuOpen && !$("#modal")) tb.menu.classList.add("faded");
     }, 4000);
   }
+  function setMenu(open) {
+    state.menuOpen = open;
+    tb.bar.classList.toggle("open", open);
+    tb.menu.setAttribute("aria-expanded", String(open));
+    tb.menu.textContent = open ? "Close" : "Menu";
+    clearTimeout(closeTimer);
+    if (open) closeTimer = setTimeout(function () { setMenu(false); }, 8000);
+    wakeMenu();
+  }
+  tb.menu.addEventListener("click", function () { setMenu(!state.menuOpen); });
+  tb.bar.addEventListener("pointerdown", function () {
+    if (state.menuOpen) { clearTimeout(closeTimer); closeTimer = setTimeout(function () { setMenu(false); }, 8000); }
+  });
+  // A tap anywhere outside the panel closes it, and still reaches whatever was tapped.
+  document.addEventListener("pointerdown", function (e) {
+    if (state.menuOpen && !tb.bar.contains(e.target) && e.target !== tb.menu) setMenu(false);
+  });
   ["pointermove", "pointerdown", "keydown", "touchstart"].forEach(function (ev) {
-    document.addEventListener(ev, showToolbar, { passive: true });
+    document.addEventListener(ev, wakeMenu, { passive: true });
   });
 
-  // A faded toolbar sits invisibly on top of the bottom row of widgets. A tap there
-  // should only wake the toolbar — not also press a widget the person can't see is
-  // being touched. Taps anywhere else go straight through to the widgets.
+  // When the Menu button has faded it is invisible but still sits in the corner. A tap on it
+  // should only wake it, not press something the person cannot see they are touching.
+  // Taps anywhere else go straight through to the widgets.
   let swallowClick = false;
-  function inToolbarArea(e) {
-    const r = tb.bar.getBoundingClientRect();
+  function inMenuArea(e) {
+    const r = tb.menu.getBoundingClientRect();
     return e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
   }
   document.addEventListener("pointerdown", function (e) {
-    if (tb.bar.classList.contains("faded") && inToolbarArea(e)) {
+    if (tb.menu.classList.contains("faded") && inMenuArea(e)) {
       swallowClick = true;
-      showToolbar();
+      wakeMenu();
       e.preventDefault();
       e.stopPropagation();
       setTimeout(function () { swallowClick = false; }, 600);
@@ -394,7 +414,7 @@
     $("#unlock").hidden = true;
     renderSound();
     keepAwake();
-    showToolbar();
+    wakeMenu();
   }
   $("#start-sound").addEventListener("click", function () { startBoard(true); });
   $("#start-silent").addEventListener("click", function () { startBoard(false); });
