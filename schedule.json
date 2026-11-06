@@ -19,7 +19,7 @@
     { "label": "Period 5",  "start": "14:40", "end": "15:30", "type": "class" }
   ],
   "dayOverrides": {
-    "Tuesday": [
+    "Wednesday": [
       {
         "replaceLabel": "Specials",
         "with": [
